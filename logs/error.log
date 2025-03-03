@@ -1,0 +1,10 @@
+[Sun Mar 02 12:58:45.601147 2025] [mpm_event:notice] [pid 47:tid 138133817186176] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+[Sun Mar 02 12:58:45.601346 2025] [core:notice] [pid 47:tid 138133817186176] AH00094: Command line: '/usr/sbin/apache2'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 02 13:21:10.204578 2025] [mpm_event:notice] [pid 21:tid 137994343651200] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+[Sun Mar 02 13:21:10.204647 2025] [core:notice] [pid 21:tid 137994343651200] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.1.100. Set the 'ServerName' directive globally to suppress this message
+[Sun Mar 02 15:04:44.808871 2025] [mpm_event:notice] [pid 20:tid 129199611758464] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+[Sun Mar 02 15:04:44.808980 2025] [core:notice] [pid 20:tid 129199611758464] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Sun Mar 02 15:34:09.493062 2025] [mpm_event:notice] [pid 23:tid 132104044115840] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+[Sun Mar 02 15:34:09.493569 2025] [core:notice] [pid 23:tid 132104044115840] AH00094: Command line: '/usr/sbin/apache2'

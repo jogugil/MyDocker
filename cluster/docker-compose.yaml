@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  head:
+    image: iblanque/openmpi:latest
+    networks:
+      - mpi_network
+    ports:
+      - "22022:22" # Exponer puerto SSH para conexión al nodo principal
+    build: .
+    environment:
+      - USER=usuario
+    command: /usr/sbin/sshd -D
+
+  node1:
+    image: iblanque/openmpi:latest
+    networks:
+      - mpi_network
+    build: .
+    environment:
+      - USER=usuario
+    command: /usr/sbin/sshd -D
+
+  node2:
+    image: iblanque/openmpi:latest
+    networks:
+      - mpi_network
+    build: .
+    environment:
+      - USER=usuario
+    command: /usr/sbin/sshd -D
+
+networks:
+  mpi_network:
+    driver: bridge
+    name: mpi_network
