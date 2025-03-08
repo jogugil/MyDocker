@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipengine-deployment  # Nombre del deployment de los nodos de trabajo
+spec:
+  replicas: 2  # Crear dos réplicas para los nodos de trabajo
+  selector:
+    matchLabels:
+      app: ipyparallel  # Etiqueta que coincide con los nodos de trabajo
+  template:
+    metadata:
+      labels:
+        app: ipyparallel  # Etiqueta que coincide con los nodos de trabajo
+    spec:
+      containers:
+        - name: ipwn  # Nombre base del contenedor (puede ser ipwn1, ipwn2, etc.)
+          image: faasioflex/ipython:jogugil  # Nombre de la imagen de los workers
+          command: [ "ipengine" ]  # Comando para ejecutar ipengine
+          args: [ "--file=/root/.ipython/profile_default/security/ipcontroller-engine.json" ]  # Ruta al archivo de configuración para ipengine
+          volumeMounts:
+            - mountPath: /root/.ipython/profile_default/security/  # Ruta donde se montarán los archivos de configuración dentro del contenedor
+              name: ipcontroller-volume  # Nombre del volumen
+      volumes:
+        - name: ipcontroller-volume  # Nombre del volumen que se utiliza para montar los archivos de configuración
+          configMap:
+            name: ipythonconf  # El ConfigMap donde están los archivos de configuración
+            items:
+              - key: ipcontroller-engine.json  # El archivo ipcontroller-engine.json
+                path: ipcontroller-engine.json  # Se montará como ipcontroller-engine.json en la ruta especificada
+              - key: ipcontroller-client.json  # El archivo ipcontroller-client.json
+                path: ipcontroller-client.json  # Se montará como ipcontroller-client.json en la ruta especificada

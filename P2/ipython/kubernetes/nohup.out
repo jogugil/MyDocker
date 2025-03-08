@@ -1,0 +1,66 @@
+Traceback (most recent call last):
+  File "/home/jogugil/.local/bin/ipcontroller", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 1273, in main
+    return IPController.launch_instance(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/traitlets/config/application.py", line 1074, in launch_instance
+    app.initialize(argv)
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/traitlets/config/application.py", line 118, in inner
+    return method(app, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 1224, in initialize
+    self.init_hub()
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 846, in init_hub
+    self.bind(query, self.client_url('registration'))
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 651, in bind
+    return util.bind(
+           ^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/util.py", line 786, in bind
+    return socket.bind(url)
+           ^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/zmq/sugar/socket.py", line 317, in bind
+    super().bind(addr)
+  File "_zmq.py", line 917, in zmq.backend.cython._zmq.Socket.bind
+  File "_zmq.py", line 179, in zmq.backend.cython._zmq._check_rc
+zmq.error.ZMQError: Cannot assign requested address (addr='tcp://172.17.0.2:47935')
+Traceback (most recent call last):
+  File "/home/jogugil/.local/bin/ipcontroller", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 1273, in main
+    return IPController.launch_instance(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/traitlets/config/application.py", line 1074, in launch_instance
+    app.initialize(argv)
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/traitlets/config/application.py", line 118, in inner
+    return method(app, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 1224, in initialize
+    self.init_hub()
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 846, in init_hub
+    self.bind(query, self.client_url('registration'))
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/controller/app.py", line 651, in bind
+    return util.bind(
+           ^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/ipyparallel/util.py", line 786, in bind
+    return socket.bind(url)
+           ^^^^^^^^^^^^^^^^
+  File "/home/jogugil/.local/share/pipx/venvs/ipyparallel/lib/python3.12/site-packages/zmq/sugar/socket.py", line 317, in bind
+    super().bind(addr)
+  File "_zmq.py", line 917, in zmq.backend.cython._zmq.Socket.bind
+  File "_zmq.py", line 179, in zmq.backend.cython._zmq._check_rc
+zmq.error.ZMQError: Cannot assign requested address (addr='tcp://172.17.0.2:40749')
+2025-03-06 16:53:53.517 [IPEngine] WARNING | Connection file '/root/.ipython/profile_default/security/ipcontroller-engine.json' not found
+2025-03-06 16:53:53.517 [IPEngine] WARNING | Waiting up to 10.0 seconds for it to arrive.
+2025-03-06 16:53:56.320 [IPEngine] WARNING | Connection file '/root/.ipython/profile_default/security/ipcontroller-engine.json' not found
+2025-03-06 16:53:56.320 [IPEngine] WARNING | Waiting up to 10.0 seconds for it to arrive.
+2025-03-06 16:54:03.539 [IPEngine] CRITICAL | Fatal: connection file never arrived: /root/.ipython/profile_default/security/ipcontroller-engine.json
+2025-03-06 16:54:06.342 [IPEngine] CRITICAL | Fatal: connection file never arrived: /root/.ipython/profile_default/security/ipcontroller-engine.json
+2025-03-06 17:13:13.688 [IPEngine] WARNING | Connection file '/root/.ipython/profile_default/security/ipcontroller-engine.json' not found
+2025-03-06 17:13:13.688 [IPEngine] WARNING | Waiting up to 10.0 seconds for it to arrive.
+2025-03-06 17:13:23.710 [IPEngine] CRITICAL | Fatal: connection file never arrived: /root/.ipython/profile_default/security/ipcontroller-engine.json
+2025-03-06 23:06:36.897 [IPEngine] WARNING | Connection file '/root/.ipython/profile_default/security/ipcontroller-engine.json' not found
+2025-03-06 23:06:36.898 [IPEngine] WARNING | Waiting up to 10.0 seconds for it to arrive.
+2025-03-06 23:06:46.926 [IPEngine] CRITICAL | Fatal: connection file never arrived: /root/.ipython/profile_default/security/ipcontroller-engine.json

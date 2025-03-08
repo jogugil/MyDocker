@@ -1,0 +1,18 @@
+{
+  "ssh": "",
+  "interface": "tcp://10.1.170.10",
+  "registration": 56229,
+  "control": 37239,
+  "mux": 35321,
+  "task": 37141,
+  "task_scheme": "leastload",
+  "iopub": 53083,
+  "notification": 42921,
+  "broadcast": 48383,
+  "key": "83fd84e1-0de25acc7dc3eaebcc1c63d7",
+  "curve_serverkey": null,
+  "location": "ipfe-pod",
+  "pack": "json",
+  "unpack": "json",
+  "signature_scheme": "hmac-sha256"
+}

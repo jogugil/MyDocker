@@ -1,0 +1,247 @@
+# Crear el namespace 'desarrollo'
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: desarrollo
+---
+# Crear el namespace 'produccion'
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: produccion
+---
+# Crear los ServiceAccounts en el namespace 'default'
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin
+  namespace: default
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: devel
+  namespace: default
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prod
+  namespace: default
+---
+# Crear Roles en el namespace 'desarrollo'
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: desarrollo
+  name: devel-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: desarrollo
+  name: prod-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: desarrollo
+  name: admin-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+# Crear RoleBindings en el namespace 'desarrollo'
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devel-rolebinding
+  namespace: desarrollo
+subjects:
+  - kind: ServiceAccount
+    name: devel
+    namespace: default
+roleRef:
+  kind: Role
+  name: devel-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prod-rolebinding
+  namespace: desarrollo
+subjects:
+  - kind: ServiceAccount
+    name: prod
+    namespace: default
+roleRef:
+  kind: Role
+  name: prod-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-rolebinding
+  namespace: desarrollo
+subjects:
+  - kind: ServiceAccount
+    name: admin
+    namespace: default
+roleRef:
+  kind: Role
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Crear Roles en el namespace 'produccion'
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: produccion
+  name: devel-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: produccion
+  name: prod-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: produccion
+  name: admin-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+# Crear RoleBindings en el namespace 'produccion'
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devel-rolebinding
+  namespace: produccion
+subjects:
+  - kind: ServiceAccount
+    name: devel
+    namespace: default
+roleRef:
+  kind: Role
+  name: devel-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prod-rolebinding
+  namespace: produccion
+subjects:
+  - kind: ServiceAccount
+    name: prod
+    namespace: default
+roleRef:
+  kind: Role
+  name: prod-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-rolebinding
+  namespace: produccion
+subjects:
+  - kind: ServiceAccount
+    name: admin
+    namespace: default
+roleRef:
+  kind: Role
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Crear ClusterRoles para acceso global
+# Crear ClusterRoles para acceso global
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: admin
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: edit
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list", "create", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: view
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services"]
+    verbs: ["get", "list"]
+---
+# Crear ClusterRoleBindings para los usuarios
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: admin
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: devel-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: devel
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: view
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prod-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: prod
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: edit
+  apiGroup: rbac.authorization.k8s.io
